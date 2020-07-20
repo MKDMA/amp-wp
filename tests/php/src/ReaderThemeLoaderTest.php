@@ -90,6 +90,12 @@ final class ReaderThemeLoaderTest extends WP_UnitTestCase {
 	public function test_register() {
 		$this->instance->register();
 		$this->assertEquals( 9, has_action( 'plugins_loaded', [ $this->instance, 'override_theme' ] ) );
+		$this->assertEquals( 10, has_filter( 'wp_prepare_themes_for_js', [ $this->instance, 'filter_wp_prepare_themes_to_indicate_reader_theme' ] ) );
+	}
+
+	/** @covers ReaderThemeLoader::filter_wp_prepare_themes_to_indicate_reader_theme() */
+	public function test_filter_wp_prepare_themes_to_indicate_reader_theme() {
+		$this->markTestIncomplete();
 	}
 
 	/** @covers ReaderThemeLoader::get_reader_theme() */
